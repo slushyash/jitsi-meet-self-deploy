@@ -1,0 +1,25 @@
+{
+  "name": "self-deploy-jitsi-meet",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "NODE_ENV=development nodemon app.js",
+    "build-jitsi-meet": "git submodule update --init --remote --depth 1 jitsi-meet && cd jitsi-meet && npm install && make compile",
+    "postinstall": "npm run build-jitsi-meet",
+    "build": "echo 'Build step: Dependencies installed and Jitsi Meet compiled.'",
+    "deploy": "vercel --prod"
+  },
+  "keywords": [],
+  "author": "Yash Aggarwal",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.0",
+    "http-proxy-middleware": "^3.0.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.7",
+    "prettier": "^3.3.3"
+  }
+}
