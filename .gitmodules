@@ -1,4 +1,4 @@
 [submodule "jitsi-meet"]
 	path = jitsi-meet
-	url = git@github.com:slushyash/jitsi-meet.git
+	url = https://github.com/slushyash/jitsi-meet.git
 	branch = yash/jaas-connection
