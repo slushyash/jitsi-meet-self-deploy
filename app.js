@@ -12,7 +12,10 @@ const PORT = process.env.PORT || 4001;
 const PROXY_TARGET = process.env.WEBPACK_DEV_SERVER_PROXY_TARGET || "https://8x8.vc";
 
 // Path to the jitsi-meet submodule
-const JITSI_MEET_PATH = path.join(__dirname, "jitsi-meet");
+const JITSI_MEET_PATH =
+  process.env.NODE_ENV === "development"
+    ? path.join(__dirname, "..", "jitsi-meet")
+    : path.join(__dirname, "jitsi-meet");
 
 // Function to determine if a request should be served locally
 function shouldServeLocally(reqPath, acceptsHtml) {
