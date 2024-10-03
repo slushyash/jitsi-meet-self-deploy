@@ -6,10 +6,10 @@
   "scripts": {
     "start": "node app.js",
     "dev": "NODE_ENV=development nodemon app.js",
-    "build-jitsi-meet": "git submodule update --init --remote --depth 1 jitsi-meet && cd jitsi-meet && npm install && make all",
     "postinstall": "npm run build-jitsi-meet",
-    "build": "echo 'Build step: Dependencies installed and Jitsi Meet compiled.'",
-    "deploy": "vercel --prod"
+    "build-jitsi-meet": "git -C jitsi-meet reset --hard origin/$(git -C jitsi-meet rev-parse --abbrev-ref HEAD) && git submodule update --init --remote --depth 1 jitsi-meet && cd jitsi-meet && npm install && make all && rm -r ios android react react-native-sdk node_modules",
+    "deploy": "vercel --prod",
+    "build": "echo 'Build step: Dependencies installed and Jitsi Meet compiled.'"
   },
   "keywords": [],
   "author": "Yash Aggarwal",
@@ -21,5 +21,6 @@
   "devDependencies": {
     "nodemon": "^3.1.7",
     "prettier": "^3.3.3"
-  }
+  },
+  "type": "module"
 }
